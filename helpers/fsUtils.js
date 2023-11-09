@@ -3,22 +3,25 @@ const fs = require('fs');
 
 const writeToFile = (destination, content) => 
   fs.writeFile(destination, JSON.stringify(content, null, 2), (err) =>
-    err ? console.error(err) : console.log(`Data written to ${destination}!`)
+    err ? console.error(err) : console.log(`Data written to ${destination}`)
   );
 
-const readAndAppend = async (fileName, content) => {
+const readAndAdd = async (fileName, content) => {
   const fileData = await readFile(fileName, 'utf-8', (err, data) => {
     if (err) {
       throw err;
     } else {
-      const parsedData = JSON.parse(data);
-      parsedData.push(content);
-      return parsedData
+      return data;
     };
   });
-
-  writeToFile(fileName, fileData);
+    
+  const parsedData = JSON.parse(fileData);
+  parsedData.push(content);
+  writeToFile(fileName, parsedData);
 };
 
+const readAndDelete = async (fileName, param) => {
+  
+}
 
-module.exports = readAndAppend
+module.exports = readAndAdd
