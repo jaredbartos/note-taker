@@ -7,13 +7,9 @@ const writeToFile = (destination, content) =>
   );
 
 const readAndAdd = async (fileName, content) => {
-  const fileData = await readFile(fileName, 'utf-8', (err, data) => {
-    if (err) {
-      throw err;
-    } else {
-      return data;
-    };
-  });
+  const fileData = await readFile(fileName, 'utf-8', (err, data) => 
+  err ? console.error(err) : data
+  );
     
   const parsedData = JSON.parse(fileData);
   parsedData.push(content);
@@ -21,7 +17,18 @@ const readAndAdd = async (fileName, content) => {
 };
 
 const readAndDelete = async (fileName, param) => {
-  
-}
+  const fileData = await readFile(fileName, 'utf-8', (err, data) => 
+    err ? console.error(err) : data
+  );
 
-module.exports = readAndAdd
+  const parsedData = JSON.parse(fileData)
+  const newArr = parsedData.filter((item) => {
+    return item.id !== param
+  });
+  writeToFile(fileName, newArr);
+};
+
+module.exports = {
+  readAndAdd,
+  readAndDelete,
+}
