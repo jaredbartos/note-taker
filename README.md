@@ -19,7 +19,9 @@ No installation required.
 
 ## Usage
 
+To use Note Taker, follow the link at the bottom of the README. You can then add notes by entering in a title for the note and also a short description.
 
+Your notes will then be stored in the sidebar. To delete a note, click on the trash icon next to the note you wish to delete.
 
 ## License
 
