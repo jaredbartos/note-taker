@@ -1,12 +1,11 @@
 const notes = require('express').Router();
 const { readAndAdd, readAndDelete } = require('../helpers/fsUtils');
 const { readFile } = require('fs/promises');
-const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
-const db = './db/db.json'
+const dbPath = './db/db.json'
 
 notes.get('/', (req, res) => {
-  readFile(db, 'utf-8', (err, data) => 
+  readFile(dbPath, 'utf-8', (err, data) => 
   err ? console.error(err) : data
   )
     .then((data) => res.json(JSON.parse(data)));
@@ -26,7 +25,7 @@ notes.post('/', (req, res) => {
     body: newNote,
   };
 
-  readAndAdd(db, newNote)
+  readAndAdd(dbPath, newNote)
     .then(() => res.json(response));
 });
 
@@ -37,7 +36,7 @@ notes.delete('/:id', (req, res) => {
     status: 'success',
   };
   
-  readAndDelete(db, noteID)
+  readAndDelete(dbPath, noteID)
     .then(() => res.json(response));
 });
 
