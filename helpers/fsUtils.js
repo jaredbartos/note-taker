@@ -39,6 +39,7 @@ const readAndDelete = async (fileName, param) => {
 
 // Export module
 module.exports = {
+  readFromFile,
   readAndAdd,
   readAndDelete,
 };

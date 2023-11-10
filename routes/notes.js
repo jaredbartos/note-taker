@@ -1,6 +1,6 @@
 // Import required modules
 const notes = require('express').Router();
-const { readAndAdd, readAndDelete } = require('../helpers/fsUtils');
+const { readAndAdd, readAndDelete, readFromFile } = require('../helpers/fsUtils');
 const { readFile } = require('fs/promises');
 const { v4: uuidv4 } = require('uuid');
 
@@ -9,9 +9,7 @@ const dbPath = './db/db.json'
 
 //GET route to retrieve notes
 notes.get('/', (req, res) => {
-  readFile(dbPath, 'utf-8', (err, data) => 
-  err ? console.error(err) : data
-  )
+  readFromFile(dbPath)
     .then((data) => res.json(JSON.parse(data)));
 });
 
