@@ -15,14 +15,14 @@ app.use(express.json());
 app.use('/api', api);
 app.use(express.static('public'));
 
-// GET route for index HTML
-app.get('/', (req, res) => 
-  res.sendFile(path.join(__dirname, '/public/index.html'))
-);
-
 // GET route for notes HTML
 app.get('/notes', (req, res) => 
   res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
+
+// GET route for index HTML
+app.get('*', (req, res) => 
+  res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
 // Set app to listen to designated port
