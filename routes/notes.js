@@ -1,7 +1,6 @@
 // Import required modules
 const notes = require('express').Router();
 const { readAndAdd, readAndDelete, readFromFile } = require('../helpers/fsUtils');
-const { readFile } = require('fs/promises');
 const { v4: uuidv4 } = require('uuid');
 
 // Declare database path variable
