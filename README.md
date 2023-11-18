@@ -39,7 +39,7 @@ jaredbartos@gmail.com
 
 ## Link to Deployed App
 
-https://note-taker-jaredbartos-a6ae3a16b976.herokuapp.com/
+[Note Taker](https://note-taker-jaredbartos.onrender.com/)
 
 ## Screenshots
 
